@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Psychic Game</title>
+</head>
+<body>
+	<h2>The Psychic Game</h2>
+	<p>Guess what letter I'm thinking of</p>
+	<p>Wins: <span id="w">0</span></p>
+	<p>Losses: <span id="l">0</span></p>
+	<p>Guesses left: <span id="gL">9</span></p>
+	<p>Your guesses so far: <span id="yGSF"></span></p>
+<script type="text/javascript">
+	//Declarations
+	var wins = 0;
+	var losses = 0;
+	var guessesLeft = 9;
+	var guessesSoFar = "";
+	
+	var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+		"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+	
+	document.onkeyup = function(event) {
+		var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+		var userGuess = event.key.toLowerCase();
+
+		//Reassignment of the wins, losses, guessesLeft, and guessesSoFar variables
+		if (userGuess === computerGuess) {
+			wins++;
+			guessesLeft = 9;
+			guessesSoFar = "";
+		}
+		if (userGuess !== computerGuess) {
+			if (computerChoices.indexOf(userGuess) === -1) {
+				window.alert("Invalid Response.  Please enter a letter.");
+			}
+			else if (computerChoices.indexOf(userGuess) !== -1) {
+				guessesLeft--;
+				if (guessesLeft == 0) {
+					losses++;
+					guessesLeft = 9;	//resets guessesLeft
+					guessesSoFar = "";	//resets guessesSoFar
+				}
+				else if (guessesLeft !== 0) {
+					if (guessesSoFar === "") {
+						guessesSoFar = userGuess;
+					}
+					else if (guessesSoFar !== "") {
+						guessesSoFar = guessesSoFar + ", " + userGuess;
+					}
+				}	
+			}
+		} 
+		//Update HTML/instruct HTML to update variables
+		document.getElementById("w").innerHTML = wins;
+		document.getElementById("l").innerHTML = losses;
+		document.getElementById("gL").innerHTML = guessesLeft;
+		document.getElementById("yGSF").innerHTML = guessesSoFar;
+	};
+</script>
+</body>
+</html>
