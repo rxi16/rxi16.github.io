@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Crystals Collector Game</title>
+
+	<!--Link to CSS reset file-->
+	<link src="assets/css/reset.css">
+
+	<!--Link to jQuery library-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!--Link to Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!--Link to CSS style file-->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body background="http://1.bp.blogspot.com/_F94JTwTwuvM/TOCXECdKe4I/AAAAAAAAAIg/KTJEVk8jVhU/s1600/Final+negative+space+image.JPG">
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<h1 class="text-center">Crystals Collector!</h1>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Directions</h3>
+					</div>
+					<div class="panel-body">
+						<p>You will be given a random number at the start of the game.</p>
+						<p>There are four crystals.  By clicking on a crystal you will add a specific amount of points to your total score.</p>
+						<p>The value of each crystal is hidden from you until you click on it.</p>
+						<p>You win the game by matching your total score to the random number given.  You lose the game by going over the random number given.</p>
+						<p>Each time the game starts, the value of each crystal is changed.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5">
+			<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Random Number</h3>
+					</div>
+					<div class="panel-body">
+						<h1 id="panel-ranNum">ranNum</h1>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Crystals</h3>
+					</div>
+					<div class="panel-body row">
+						<div class="col-lg-3">
+							<button class="btn btn-default" id="btnOrange"><img src="assets/images/orange.jpg" alt="orange crystal" class="img-homogeneous" /></button>
+						</div>
+						<div class="col-lg-3">
+							<button class="btn btn-default" id="btnClear"><img src="assets/images/clear.jpg" alt="clear crystal" class="img-homogeneous" /></button>
+						</div>
+						<div class="col-lg-3">
+							<button class="btn btn-default" id="btnPurple"><img src="assets/images/purple.jpg" alt="purple crystal" class="img-homogeneous" /></button>
+						</div>
+						<div class="col-lg-3">
+							<button class="btn btn-default" id="btnBlue"><img src="assets/images/blue.jpg" alt="blue crystal" class="img-homogeneous" /></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Your total score is:</h3>
+					</div>
+					<div class="panel-body">
+						<h1 id="panel-totScore"></h1>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1 class="panel-title" id="result">Result</h1>
+					</div>
+					<div class="panel-body">
+						<h1 id="wins"></h1>
+						<h1 id="losses"></h1>
+						<h1 id="yourResult"></h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	$(document).ready(function(event) {
+
+		var ranNum = 0;
+		var orangeVal = 0;
+		var clearVal = 0;
+		var purpleVal = 0;
+		var blueVal = 0;
+		var totScore = 0;
+		var wins = 0;
+		var losses = 0;
+
+		//Assigns values to random number, crystals, and sets total score to 0 
+		function startRound() {
+			ranNum = Math.floor(Math.random() * 102) + 19;
+			orangeVal = Math.floor(Math.random() * 12) + 1;
+			clearVal = Math.floor(Math.random() * 12) + 1;
+			purpleVal = Math.floor(Math.random() * 12) + 1;
+			blueVal = Math.floor(Math.random() * 12) + 1;
+			totScore = 0;
+		}
+		function startRoundDisplay() {
+			//Displays random number
+			$("#panel-ranNum").html(ranNum);
+
+			//Displays totScore of 0 upon page-reloading
+			$("#panel-totScore").html(totScore);
+		}
+
+		//Calls functions to assign and display upon page-reloading
+		startRound();
+		startRoundDisplay();
+		
+		//Displays 0 wins and 0 losses upon page-reloading
+		$("#wins").html("Wins: " + wins);
+		$("#losses").html("Losses: " + losses);
+
+		//Adjusts total score every time a button is clicked
+		$("#btnOrange").on("click", function(event) {
+			totScore += orangeVal;
+			$("#panel-totScore").html(totScore);
+			if (totScore == ranNum) {
+				wins++;
+				$("#wins").html("Wins: " + wins);
+				$("#yourResult").html("You win!");
+				startRound();
+				startRoundDisplay();
+			}
+			else if (totScore > ranNum) {
+				losses++;
+				$("#losses").html("Losses: " + losses);
+				$("#yourResult").html("You lose!");
+				startRound();
+				startRoundDisplay();
+			}
+		});
+		$("#btnClear").on("click", function(event) {
+			totScore += clearVal;
+			$("#panel-totScore").html(totScore);
+			if (totScore == ranNum) {
+				wins++;
+				$("#wins").html("Wins: " + wins);
+				$("#yourResult").html("You win!");
+				startRound();
+				startRoundDisplay();
+			}
+			else if (totScore > ranNum) {
+				losses++;
+				$("#losses").html("Losses: " + losses);
+				$("#yourResult").html("You lose!");
+				startRound();
+				startRoundDisplay();
+			}
+		});
+		$("#btnPurple").on("click", function(event) {
+			totScore += purpleVal;
+			$("#panel-totScore").html(totScore);
+			if (totScore == ranNum) {
+				wins++;
+				$("#wins").html("Wins: " + wins);
+				$("#yourResult").html("You win!");
+				startRound();
+				startRoundDisplay();
+			}
+			else if (totScore > ranNum) {
+				losses++;
+				$("#losses").html("Losses: " + losses);
+				$("#yourResult").html("You lose!");
+				startRound();
+				startRoundDisplay();
+			}
+		});
+		$("#btnBlue").on("click", function(event) {
+			totScore += blueVal;
+			$("#panel-totScore").html(totScore);
+			if (totScore == ranNum) {
+				wins++;
+				$("#wins").html("Wins: " + wins);
+				$("#yourResult").html("You win!");
+				startRound();
+				startRoundDisplay();
+			}
+			else if (totScore > ranNum) {
+				losses++;
+				$("#losses").html("Losses: " + losses);
+				$("#yourResult").html("You lose!");
+				startRound();
+				startRoundDisplay();
+			}
+		});
+
+	});
+</script>
+</body>

@@ -1,0 +1,13 @@
+body {
+	background-repeat: repeat;
+}
+#panel-ranNum {
+	text-align: center;
+}
+.img-homogeneous {
+	width: 90px;
+	height: 90px;
+}
+#panel-totScore {
+	text-align: center;
+}
