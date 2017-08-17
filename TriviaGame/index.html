@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Trivia Game | Figure Skating</title>
+
+	<!-- reset.css -->
+	<link rel="stylesheet" href="assets/css/reset.css" />
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+
+	<!-- style.css -->
+	<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+	<h3 id="fixedJumbotron" class="jumbotron jumbotron-default text-center">You will be given <span class="text-danger">30 seconds</span> to answer the questions.  The clock will begin after you click the start button below.</h3>
+	<div class="container-fluid">
+		<h1 class="jumbotron jumbotron-default text-center">Figure Skating Technique Trivia</h1>
+		<div id="startJumbotron" class="jumbotron">
+			<button class="btn btn-primary btn-block" type="start">Start</button>
+		</div>
+		<div class="well well-default">
+			<h3 class="text-center">The <span class="text-danger">triple axel</span> requires how many <span class="text-danger">rotations</span> in the air?</h3><br />
+				<div class="row">
+					<div class="col-lg-3"><label><input type="radio" name="tripleAxel" value="2">&emsp;2</input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="tripleAxel" value="2.5">&emsp;2.5</input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="tripleAxel" value="3">&emsp;3</input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="tripleAxel" value="3.5">&emsp;3.5</input></label></div>
+				</div>
+		</div><br />
+		<div class="well well-default">
+			<h3 class="text-center">Which of the following images feature a <span class="text-danger">camel spin</span>?</h3><br />
+				<div class="row">
+					<div class="col-lg-3"><label><input type="radio" name="camelSpin" value="camel">&emsp;<img src="assets/images/camel-spin.png" class="box" alt="first option spin"></img></input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="camelSpin" value="sit">&emsp;<img src="assets/images/sit-spin.jpg"  class="box" alt="second option spin"></img></input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="camelSpin" value="lay-back">&emsp;<img src="assets/images/lay-back-spin.jpg" class="box" alt="third option spin"></img></input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="camelSpin" value="scratch">&emsp;<img src="assets/images/scratch-spin.jpg"  class="box" alt="fourth option spin"></img></input></label></div>
+				</div>
+		</div><br />
+		<div class="well well-default">
+			<h3 class="text-center">The <span class="text-danger">lutz jump</span> takes off of which of the following <span class="text-danger">edges</span>?</h3><br />
+				<div class="row">
+					<div class="col-lg-3"><label><input type="radio" name="lutzEdge" value="outside">&emsp;outside</input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="lutzEdge" value="inside">&emsp;inside</input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="lutzEdge" value="double">&emsp;double</input></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="lutzEdge" value="toe-pick">&emsp;toe pick</input></label></div>
+				</div>
+		</div><br />
+		<div class="well well-default">
+			<h3 class="text-center">Which of the following moves requires that the skater <span class="text-danger">drags</span> his/her <span class="text-danger">boot</span> on the ice?</h3><br />
+				<div class="row">
+					<div class="col-lg-3"><label><input type="radio" name="dragBoot" value="spiral" />&emsp;spiral<p></p>&emsp;&emsp;<img src="assets/images/spiral.jpg" class="box" alt="spiral"></img></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="dragBoot" value="lunge" />&emsp;lunge<p></p>&emsp;&emsp;<img src="assets/images/lunge.jpg" class="box" alt="lunge"></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="dragBoot" value="ina-bauer" />&emsp;ina bauer<p></p>&emsp;&emsp;<img src="assets/images/ina-bauer.jpg" class="box" alt="ina bauer"></label></div>
+					<div class="col-lg-3"><label><input type="radio" name="dragBoot" value="hockey-stop" />&emsp;hockey stop<p></p>&emsp;&emsp;<img src="assets/images/hockey-stop.jpg" class="box" alt="hockey stop"></label></div>
+				</div>
+		</div><br />
+		<div id="submitJumbotron" class="jumbotron">
+			<button class="btn btn-primary btn-block" type="submit">Submit</button>
+		</div>
+		<div id="results" class="jumbotron jumbotron-default text-center">
+			<h1>Results</h1>
+			<h3 id="correct">Correct: &emsp;</h3>
+			<h3 id="incorrect">Incorrect: &emsp;</h3>
+			<h3 id="blank">Blank: &emsp;</h3>
+		</div>
+	</div>
+	
+	<!-- jquery library -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- app.js -->
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+</html>

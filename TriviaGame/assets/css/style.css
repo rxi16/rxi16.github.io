@@ -1,0 +1,31 @@
+.box {
+	width: 150px;
+	height: 150px;
+}
+label {
+	cursor: pointer;
+	font-size: 20px;
+}
+.btn {
+	font-size: 64px;
+}
+#fixedJumbotron {
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	margin-top: 0px;
+	z-index: 100;
+	background-color: pink;
+}
+.container-fluid {
+	margin-top: 144px;
+}
+#results {
+	display: none;
+}
+.well {
+	display: none;
+}
+#submitJumbotron {
+	display: none;
+}
