@@ -1,0 +1,15 @@
+body {
+	background-color: silver;
+}
+.jumbotron {
+	background-color: silver;
+	background-image: url("../images/train.png");
+	background-repeat: repeat-x;
+	padding-bottom: 24px;
+	background-color: black;
+	color: white;
+}
+.card-header, .btn {
+	background-color: black;
+	color: white;
+}
