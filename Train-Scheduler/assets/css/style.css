@@ -1,18 +1,22 @@
 body {
 	background-color: silver;
 }
+label {
+	padding-left: 13px;
+	color: red;
+}
 .jumbotron {
-	background-color: silver;
+	background-color: gray;
 	background-image: url("../images/train.png");
 	background-repeat: repeat-x;
 	padding-bottom: 24px;
 	background-color: black;
-	color: white;
+	color: silver;
 }
 .card-header, .btn {
-	background-color: black;
+	background-color: gray;
 	color: white;
 }
 .form-group {
-	padding: 0px 12px 0px 12px;
+	padding: 12px 12px 0 12px;
 }
