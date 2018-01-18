@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>Employee Tracker</title>
+
+	<!-- jquery library -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  	<!-- bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	
+	<!-- Tether (required for bootstrap 4.0.0) -->
+	<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+
+	<!-- bootstrap JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+	<!-- FIREBASE -->
+  	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="jumbotron jumbotron-default">
+		<h1 class="text-center">Employee Data Management</h1>
+		<p class="text-center">Comprehensive...</p>
+	</div>
+<div class="card">
+	<div class="card-header">
+		<h3>Current Employees</h3>
+	</div>
+	<div class="card-body">
+	    <table class="table">
+	      <thead>
+	        <tr>
+	          <th>Employee Name</th>
+	          <th>Role</th>
+	          <th>Start Date</th>
+	          <th>Months Worked</th>
+	          <th>Monthly Rate ($)</th>
+	          <th>Total Billed ($)</th>
+	        </tr>
+	      </thead>
+	      <tbody id="tbody">
+	        <tr>
+	          <td>Mark Otto</td>
+	          <td>Salesman</td>
+	          <td>01/01/01</td>
+	          <td>36</td>
+	          <td>10000</td>
+	          <td>360000</td>
+	        </tr>
+	        <tr>
+	          <td>Jacob</td>
+	          <td>Thornton</td>
+	          <td>@fat</td>
+	          <td>Jacob</td>
+	          <td>Thornton</td>
+	          <td>@fat</td>
+	        </tr>
+	        <tr>
+	          <td>Larry</td>
+	          <td>the Bird</td>
+	          <td>@twitter</td>
+	          <td>Larry</td>
+	          <td>the Bird</td>
+	          <td>@twitter</td>
+	        </tr>
+	      </tbody>
+	    </table>
+	</div>
+</div>
+<div class="card">
+	<div class="card-header">
+		<h3>Add Employee</h3>
+	</div>
+	<div class="card-body">
+		<div class="form-group form-control">
+			<label>Emplooyee Name</label>
+			<input id="name-input" type="text" class="form-control" />
+		</div>
+		<div class="form-group form-control">
+			<label>Role</label>
+			<input  id="role-input" type="text" class="form-control" />
+		</div>
+		<div class="form-group form-control">
+			<label>Start Date (DD/MM/YY - ex: 01/01/89)</label>
+			<input  id="startDate-input" type="text" class="form-control" />
+		</div>
+		<div class="form-group form-control">
+			<label>Monthly Rate</label>
+			<input  id="monthlyRate-input" type="text" class="form-control" />
+		</div>
+		<button id="add-user" type="submit" class="btn btn-primary">Submit</button>
+	</div>
+</div>
+</div>
+  <!-- Script -->
+  <script type="text/javascript">
+
+    // Initialize Firebase
+   var config = {
+    apiKey: "AIzaSyDeLtqB-ox060gfcMcpDiKjVics-6nCaWY",
+    authDomain: "saturday-1e36f.firebaseapp.com",
+    databaseURL: "https://saturday-1e36f.firebaseio.com",
+    projectId: "saturday-1e36f",
+    storageBucket: "",
+    messagingSenderId: "647581530786"
+  };
+
+    firebase.initializeApp(config);
+
+    // Create a variable to reference the database.
+    var database = firebase.database();
+
+    // Initial Values
+    var name = "";
+    var role = "";
+    var startDate = 0;
+    var monthsWorked = 0;
+    var monthlyRate = 0;
+    var totalBilled = 0;
+
+    // Capture Button Click
+    $("#add-user").on("click", function(event) {
+      event.preventDefault();
+
+      // Grabbed values from text boxes
+      name = $("#name-input").val().trim();
+      role = $("#role-input").val().trim();
+      startDate = $("#startDate-input").val().trim();
+      monthlyRate = $("#monthlyRate-input").val().trim();
+
+      // Code for handling the push
+      database.ref().push({
+        name: name,
+        role: role,
+        startDate: startDate,
+        monthlyRate: monthlyRate,
+		dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
+
+    });
+
+    // Firebase watcher + initial loader + order/limit HINT: .on("child_added"
+    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+      var sv = snapshot.val();
+
+      // Console.loging the last user's data
+      console.log(sv.name);
+      console.log(sv.role);
+      console.log(sv.startDate);
+      console.log(sv.monthsWorked);
+      console.log(sv.monthlyRate);
+      console.log(sv.totalBilled);
+
+      // start here what does this code below do?  what does it mean?
+      var date1=new Date(sv.start);//Remember, months are 0 based in JS
+      var date2=new Date();
+      var year1=date1.getFullYear();
+      var year2=date2.getFullYear();
+      var month1=date1.getMonth();
+      var month2=date2.getMonth();
+      if(month1===0){ //Have to take into account
+        month1++;
+        month2++;
+    }
+
+      appendFunction(sv);
+
+      // Change the HTML to reflect
+      $("#tbody").append(
+      	$("<tr>"),
+	    $("<td>" + sv.name + "</td>"),
+	    $("<td>" + sv.role + "</td>"),
+	    $("<td>" + sv.startDate + "</td>"),
+	    $("<td>" + sv.monthsWorked + "</td>"),
+	    $("<td>" + sv.monthlyRate + "</td>"),
+	    $("<td>" + sv.totalBilled + "</td>"),
+	    $("</tr>")
+      );
+
+      var startDateConverted = moment(startDate, "MMDDYY");
+      moment(startDateConverted).diff(moment(), "months");
+
+      // Handle the errors
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
+  </script>
+  </body>
+  </html>
