@@ -18,8 +18,14 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 <style type="text/css">
-	#form-group2 {
-		float: right;
+	html {
+		-webkit-tap-highlight-color: #ffffff;
+	}
+	button {
+		cursor: pointer;
+	}
+	#img-result {
+		cursor: pointer;
 	}
 </style>
 
@@ -27,23 +33,32 @@
 <body>
 <div class="container-fluid">
 <form>
-	<div class="form-group">
-		<label id="choose-label">Choose a topic: </label>
-		<div id="button-div">
-			<button id="yoga" type="submit" class="btn btn-default btn-topics" value="yoga">Yoga</button>
-			<button id="nature" type="submit" class="btn btn-default btn-topics" value="nature">Nature</button>
-			<button id="mint" type="submit" class="btn btn-default btn-topics" value="mint">Mint</button>
-			<button id="negative-space" type="submit" class="btn btn-default btn-topics" value="negative-space">Negative Space</button>
+	<img src="click-downsized.gif" style="height:80px;width:140px;" />
+	<div class="row">
+		<div class="col-md-4">
+			<label id="choose-label" class="form-control">Choose a topic</label>
+		</div>
+		<div id="add-topic" class="form-group col-md-8">
+			<label id="add-label">Add a topic: </label>
+			<input id="input" type="text" />
+			<button id="submit" type="submit" class="btn btn-primary">Submit</button>
 		</div>
 	</div>
-	<div id="form-group2" class="form-group">
-		<label id="add-label">Add a topic: </label>
-		<input id="input" type="text" />
-		<button id="submit" type="submit" class="btn btn-primary">Submit</button>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<div id="button-div">
+				<button id="yoga" type="submit" class="btn btn-default btn-topics form-control" value="yoga">Yoga</button>
+				<button id="nature" type="submit" class="btn btn-default btn-topics form-control" value="nature">Nature</button>
+				<button id="mint" type="submit" class="btn btn-default btn-topics form-control" value="mint">Mint</button>
+				<button id="negative-space" type="submit" class="btn btn-default btn-topics form-control" value="negative-space">Negative Space</button>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<card id="card">
+			</card>
+		</div>
 	</div>
 </form>
-<card id="card">
-</card>
 <!-- logic.js -->
 <script type="text/javascript" src="logic.js"></script>
 </div>

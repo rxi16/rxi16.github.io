@@ -30,7 +30,8 @@ function runQuery(topicInput) {
 					"url-animate": GIPHYData.data[i].images.fixed_height.url,
 					state: "still",
 					type: "gif",
-					class: "img"
+					class: "img",
+					id: "img-result"
 				}),
 				$("<p>"),
 				$("<label>").html("Rating: " + GIPHYData.data[i].rating)
@@ -74,11 +75,11 @@ $("#submit").on("click", function(event) {
   	topicCount = topics.length;
 
   	// create button element
-  	$("#button-div").append(
+  	$("#button-div").prepend(
 	  	$("<button>").attr({
 			id: topicInput, 
 			type: "submit",
-			class: "btn btn-default btn-topics",
+			class: "btn btn-default btn-topics form-control",
 			value: topicInput,
 		}).html(topicInput)
 	);
