@@ -84,6 +84,8 @@ function runDemo() {
 	});
 }
 
+url = url + "&q=" + "nature" + "&limit=" + limit;
+runQuery(url);
 url = url + "&q=" + "flower" + "&limit=" + 1;
 runDemo(url);
 
