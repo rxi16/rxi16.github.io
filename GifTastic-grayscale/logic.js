@@ -35,11 +35,57 @@ function runQuery(topicInput) {
 				}),
 				$("<p>"),
 				$("<label>").html("Rating: " + GIPHYData.data[i].rating)
-			)
+			);
 			
 		}
 	});
 }
+
+function runDemo() {
+	$.ajax({
+    url: url,
+    method: "GET"
+  	}).done(function(GIPHYData) {
+
+			$("#demo-still").append(
+				$("<p>").attr({
+					id: "still-animate",
+					value: "Still"
+				}).html("Still"),
+				$("<img>").attr({
+					src: GIPHYData.data[0].images.fixed_height_still.url, 
+					"url-still": GIPHYData.data[0].images.fixed_height_still.url,
+					"url-animate": GIPHYData.data[0].images.fixed_height.url,
+					state: "still",
+					type: "gif",
+					class: "img",
+					id: "img-result"
+				}),
+				$("<p>"),
+				$("<label>").html("Rating: " + GIPHYData.data[0].rating)
+			);
+			$("#demo-animate").append(
+				$("<p>").attr({
+					id: "still-animate",
+					value: "Animate"
+				}).html("Animate"),
+				$("<img>").attr({
+					src: GIPHYData.data[0].images.fixed_height.url, 
+					"url-still": GIPHYData.data[0].images.fixed_height_still.url,
+					"url-animate": GIPHYData.data[0].images.fixed_height.url,
+					state: "animate",
+					type: "gif",
+					class: "img",
+					id: "img-result"
+				}),
+				$("<p>"),
+				$("<label>").html("Rating: " + GIPHYData.data[0].rating)
+			);
+	});
+}
+
+url = url + "&q=" + "flower" + "&limit=" + 1;
+runDemo(url);
 
 // whenever a button is clicked, do the following
 $(document).on("click", ".btn-topics", function() {
@@ -68,22 +114,25 @@ $("#submit").on("click", function(event) {
   	// create variable to hold input text
   	var topicInput = $("#input").val().trim();
 
-	// push input text to topics array
-	topics.push(topicInput);
+	if (topicInput !== "") {
+		// push input text to topics array
+		topics.push(topicInput);
+		console.log(topics);
 
-	// updates topicCount
-  	topicCount = topics.length;
+		// updates topicCount
+	  	topicCount = topics.length;
 
-  	// create button element
-  	$("#button-div").prepend(
-	  	$("<button>").attr({
-			id: topicInput, 
-			type: "submit",
-			class: "btn btn-default btn-topics form-control",
-			value: topicInput,
-		}).html(topicInput)
-	);
- });
+	  	// create button element
+	  	$("#button-div").prepend(
+		  	$("<button>").attr({
+				id: topicInput, 
+				type: "submit",
+				class: "btn btn-default btn-topics form-control",
+				value: topicInput,
+			}).html(topicInput)
+		);
+  	}
+});
 
 // whenever image is clicked, do the following
 $(document).on("click", ".img", function() {
@@ -97,4 +146,11 @@ $(document).on("click", ".img", function() {
 	        $(this).attr("src", $(this).attr("url-still"));
 	        $(this).attr("state", "still");
 	    }
+	var value = $("#still-animate").val();
+		if (value === "Still") {
+			value = "Animate";
+		}
+		else if (value === "Animate") {
+			value = "Still";
+		}
 });

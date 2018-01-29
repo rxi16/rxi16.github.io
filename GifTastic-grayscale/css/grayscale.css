@@ -31,6 +31,11 @@ p {
   margin: 0 0 25px;
 }
 
+.input-group-addon {
+  background-color: white;
+  color: black;
+}
+
 @media (min-width: 768px) {
   p {
     font-size: 18px;

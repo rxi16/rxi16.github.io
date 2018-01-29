@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>GifTastic</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">GifTastic Page Cover</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">GifTastic</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -54,10 +54,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Start GifTastic</a>
+              <a class="nav-link js-scroll-trigger" href="#page-top">Cover</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="#start">Start</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#demo">Demo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Connect</a>
             </li>
           </ul>
         </div>
@@ -71,9 +77,9 @@
           <div class="row">
             <div class="col-lg-8 mx-auto">
               <h1 class="brand-heading">GifTastic</h1>
-              <p class="intro-text">A responsive, one page fantastic gif-finder.
-                <br>Retrieved for you from www.giphy.com</p>
-              <a href="#about" class="btn btn-circle js-scroll-trigger">
+              <p class="intro-text">A responsive, fantastic gif-finder.
+                <br>Retrieved for you from <a href="https://www.giphy.com" target="_blank">www.giphy.com</a></p>
+              <a href="#start" class="btn btn-circle js-scroll-trigger">
                 <i class="fa fa-angle-double-down animated"></i>
               </a>
             </div>
@@ -82,43 +88,70 @@
       </div>
     </header>
 
-    <!-- About Section -->
-<div class="container-fluid">
-<form id="about">
-  <img src="click-downsized.gif" style="height:80px;width:140px;" />
-  <div class="row">
-    <div class="col-md-4 col-lg-4">
-      <h2 id="choose-label">Choose a topic</h2>
-    </div>
-    <div id="add-topic" class="form-group col-md-8 col-lg-8">
-      <label><h2 id="add-label">Add a topic: </h2></label>
-      <input id="input" type="text" />
-      <button id="submit" type="submit" class="btn">Submit</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group col-md-4 col-lg-4">
-      <div id="button-div">
-        <button id="yoga" type="submit" class="btn btn-default btn-topics form-control" value="yoga">Yoga</button>
-        <button id="nature" type="submit" class="btn btn-default btn-topics form-control" value="nature">Nature</button>
-        <button id="mint" type="submit" class="btn btn-default btn-topics form-control" value="mint">Mint</button>
-        <button id="negative-space" type="submit" class="btn btn-default btn-topics form-control" value="negative-space">Negative Space</button>
+    <!-- Start Section -->
+    <section id="start" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <a class="js-scroll-trigger" href="#start"><h2>Start</h2></a>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <h2 id="choose-label">Choose a topic</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-4 col-lg-4">
+          <div id="add-topic" class="input-group">
+            <!--<i class="fa fa-plus input-group-addon" style="padding:0.375rem 0.75rem 0.375rem 0.75rem;"></i>-->
+            <input id="input" type="text" placeholder="Add a topic" class="text-center" style="width:70%;" />
+            <button id="submit" type="submit" class="btn input-group-addon" style="width:30%;">Submit</button>
+          </div>
+          <div id="button-div">
+            <button id="yoga" type="submit" class="btn btn-default btn-topics form-control" value="yoga">Yoga</button>
+            <button id="nature" type="submit" class="btn btn-default btn-topics form-control" value="nature">Nature</button>
+            <button id="mint" type="submit" class="btn btn-default btn-topics form-control" value="mint">Mint</button>
+            <button id="negative-space" type="submit" class="btn btn-default btn-topics form-control" value="negative-space">Negative Space</button>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-8">
+          <card id="card">
+          </card>
+        </div>
       </div>
     </div>
-    <div class="col-md-8 col-lg-8">
-      <card id="card">
-      </card>
-    </div>
-  </div>
-</form>
-</div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <a class="js-scroll-trigger" href="#demo"><h2>Demo</h2></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-lg-4">
+            <h2>Click each image</h2>
+            <h5 style="text-align:left;">watch Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate <small>become</small> Still <small>become</small> Animate</h5>
+          </div>
+          <div id="demo-still" class="col-md-4 col-lg-4">
+          </div>
+          <div id="demo-animate" class="col-md-4 col-lg-4">
+          </div>
+        </div>
+          <!--</div>-->
+      </div>
+    </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="content-section text-center">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Connect with Me</h2>
+            <a class="js-scroll-trigger" href="#contact"><h2>Connect with Me</h2></a>
             <ul class="list-inline banner-social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.linkedin.com/in/rebecca-ionescu-59248941/" class="btn btn-default btn-lg">
