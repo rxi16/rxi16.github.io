@@ -16,11 +16,11 @@ $("button[type=start]").on("click", function() {
 var clock = {
 	timeRemaining: 30,
 	updateTime: function() {
-	// decrement timeRemaining by 1
-	clock.timeRemaining--;
-	// Update timeRemaining every second
-	$("#fixedJumbotron").html("Time Remaining: &emsp;" + clock.timeRemaining + " seconds");
-	setTimeout(function() {over.stopClockDisplay(); over.grade()}, 30000);
+		// decrement timeRemaining by 1
+		clock.timeRemaining--;
+		// Update timeRemaining every second
+		$("#fixedJumbotron").html("Time Remaining: &emsp;" + clock.timeRemaining + " seconds");
+		setTimeout(function() {over.stopClockDisplay();}, 30000);
 	}
 };
 
